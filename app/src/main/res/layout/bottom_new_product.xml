@@ -50,7 +50,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:maxLength="30"
-        android:text="Produto"
+        android:hint="Produto"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:layout_editor_absoluteX="16dp" />
 

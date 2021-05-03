@@ -179,7 +179,15 @@ public class Client extends Fragment implements MyDialogCloseListener {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                recyclerAdapter.getFilter().filter(newText);
+                try {
+                    if(clients != null){
+                        recyclerAdapter.getFilter().filter(newText);
+                        return false;
+                    }
+
+                }catch (NullPointerException e){
+                    return false;
+                }
                 return false;
             }
         });

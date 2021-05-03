@@ -19,7 +19,7 @@ import java.util.List;
 
 public class RecyclerClientAdapter extends RecyclerView.Adapter<RecyclerClientAdapter.ViewHolder> implements Filterable {
 
-    private static final String TAG = "ReciclerAdapter";
+    private static final String TAG = "RecyclerAdapter";
     List<ClientResponse> clientList;
     List<ClientResponse> clientListAll;
     public RecyclerClientAdapter(List<ClientResponse> clientList){
@@ -66,19 +66,22 @@ public class RecyclerClientAdapter extends RecyclerView.Adapter<RecyclerClientAd
 
             List<ClientResponse> filteredList = new ArrayList<>();
 
-            if(charSequence.toString().isEmpty()){
-                filteredList.addAll(clientListAll);
-            }else{
-                for (ClientResponse clientResponse: clientListAll){
-                    if(clientResponse.getName().toLowerCase().contains(charSequence.toString().toLowerCase()) || clientResponse.getCellphone().contains(charSequence.toString().toLowerCase())){
-                        filteredList.add(clientResponse);
+            if(clientList != null){
+                if(charSequence.toString().isEmpty()){
+                    filteredList.addAll(clientListAll);
+                }else{
+                    for (ClientResponse clientResponse: clientListAll){
+                        if(clientResponse.getName().toLowerCase().contains(charSequence.toString().toLowerCase()) || clientResponse.getCellphone().contains(charSequence.toString().toLowerCase())){
+                            filteredList.add(clientResponse);
+                        }
                     }
                 }
-            }
 
-            FilterResults filterResults = new FilterResults();
-            filterResults.values = filteredList;
-            return filterResults;
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filteredList;
+                return filterResults;
+            }
+            return null;
         }
 
         @Override
