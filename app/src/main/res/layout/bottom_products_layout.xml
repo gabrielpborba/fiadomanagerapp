@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="16dp"
+    android:id="@+id/bottom_sheet_products_layout">
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_product"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="131dp" />
+
+    <Spinner
+        android:id="@+id/spinner_client"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.069"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/select_quantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_client" />
+
+    <EditText
+        android:id="@+id/qtd_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="16dp"
+        android:inputType="number"
+        android:text="0"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/decrease"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_client" />
+
+    <Button
+        android:id="@+id/decrease"
+        android:layout_width="42dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="12dp"
+        android:text="-"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_client" />
+
+    <Button
+        android:id="@+id/increase"
+        android:layout_width="42dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="16dp"
+        android:text="+"
+        app:layout_constraintStart_toEndOf="@+id/qtd_number"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_client" />
+
+    <Button
+        android:id="@+id/btn_create_product"
+        android:layout_width="357dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="92dp"
+        android:text="@string/add"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_client"
+        tools:layout_editor_absoluteX="17dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

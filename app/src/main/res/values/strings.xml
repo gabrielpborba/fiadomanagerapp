@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">FiadoManager</string>
+    <string name="already_have_account">I already have an account</string>
+    <string name="want_create_account">I want to create an account</string>
+    <string name="home_welcome">Welcome!</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome to Fiado Manager !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="btn_register">Register</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save_client">Save Client</string>
+    <string name="insert_client_data">Enter client data</string>
+    <string name="select_client">Select Client</string>
+    <string name="create_ordersheet">CREATE ORDERSHEET</string>
+    <string name="insert_product_data">Enter product data</string>
+    <string name="save_product">SAVE PRODUCT</string>
+    <string name="select_product">Select product</string>
+    <string name="select_quantity">Select quantity</string>
+    <string name="add">Add</string>
+    <string name="register_new_client">REGISTER NEW CLIENT</string>
+    <string name="new_item">ADD ITEM</string>
+    <string name="close_ordersheet">CLOSE ORDERSHEET</string>
+    <string name="insert_new_product">INSERT NEW PRODUCT</string>
+    <string name="clients_null">It is necessary to register a customer to open a command</string>
+    <string name="products_null">It is necessary to register a product to add to a command</string>
+    <string name="logout">LOGOUT</string>
+    <string name="product_add_success">Product added</string>
+    <string name="product_add_zero">Quantity must be greater than 0 </string>
+</resources>
