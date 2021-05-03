@@ -3,7 +3,7 @@ package com.example.fiadomanager.data.model.product;
 public class NewProductRequest {
 
     private String description;
-    private Long value;
+    private String value;
     private Long idProduct;
 
     public String getDescription() {
@@ -14,11 +14,11 @@ public class NewProductRequest {
         this.description = description;
     }
 
-    public Long getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(Long value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

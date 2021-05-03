@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,14 +20,19 @@ import com.example.fiadomanager.MyDialogCloseListener;
 import com.example.fiadomanager.R;
 import com.example.fiadomanager.api.ProductApi;
 import com.example.fiadomanager.api.RetrofitApi;
+import com.example.fiadomanager.data.model.exception.ExceptionDTO;
 import com.example.fiadomanager.data.model.product.NewProductRequest;
 import com.example.fiadomanager.data.model.product.NewProductResponse;
 import com.example.fiadomanager.ui.home.fragment.Product;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import org.json.JSONObject;
+
 import java.util.Optional;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 
 public class BottomSheetNewProductDialog extends BottomSheetDialogFragment {
 
@@ -55,7 +61,7 @@ public class BottomSheetNewProductDialog extends BottomSheetDialogFragment {
 
         if(null != textValue){
             editDescription.setText(textDescription);
-            editValue.setText(textValue);
+            editValue.setText(textValue.trim());
         }
         buttonCreateProduct = (Button) view.findViewById(R.id.btn_create_product);
         buttonCreateProduct.setOnClickListener(new View.OnClickListener() {
@@ -70,21 +76,26 @@ public class BottomSheetNewProductDialog extends BottomSheetDialogFragment {
                     newProductRequest.setDescription(editDescription.getText().toString());
 
                     String value = editValue.getText().toString();
-                    String teste = "100.11";
-                    String newv = value.replaceFirst("^ *", "").replace(" ", "").trim();
-                    newProductRequest.setValue(Long.parseLong(teste));
+                    newProductRequest.setValue(value.replace(" ", ""));
                 if(idProduct > 0l){
                     newProductRequest.setIdProduct(idProduct);
                 }
+
                 Call<NewProductResponse> callProduct = productApi.newProduct(newProductRequest);
 
+                Response<NewProductResponse> response = callProduct.clone().execute();
 
-                newProductResponse = callProduct.execute().body();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                if(response.errorBody() != null) {
 
-                if(newProductResponse.getIdProduct() > 0l){
+                    ResponseBody responseBody = response.errorBody();
+                    JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                    ExceptionDTO exceptionDTO = new ExceptionDTO(jsonObject.get("httpStatus").toString(),jsonObject.get("errorMessage").toString());
+
+                    Toast toast =  Toast.makeText(view.getContext(), exceptionDTO.getErrorMessage(),
+                            Toast.LENGTH_LONG);
+                    toast.show();
+                } else{
+
                     FragmentManager fragment =getFragmentManager();
                     Optional<Fragment> productFragment = fragment.getFragments().stream().filter(fragment1 -> fragment1 instanceof Product).findAny();
                     try {
@@ -94,15 +105,21 @@ public class BottomSheetNewProductDialog extends BottomSheetDialogFragment {
                     }
 
                     dismiss();
-                }else{
 
                 }
 
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         return view;
+
+
     }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override

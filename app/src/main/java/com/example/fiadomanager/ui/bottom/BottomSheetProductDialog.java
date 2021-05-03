@@ -117,7 +117,7 @@ public class BottomSheetProductDialog extends BottomSheetDialogFragment {
 
                 if(number.getText().toString().equals("0")){
 
-                    Toast toast =  Toast.makeText(view.getContext(),  R.string.product_add_success,
+                    Toast toast =  Toast.makeText(view.getContext(),  R.string.product_add_zero,
                             Toast.LENGTH_LONG);
                     toast.show();
                 }else{

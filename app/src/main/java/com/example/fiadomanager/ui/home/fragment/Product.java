@@ -164,7 +164,9 @@ public class Product extends Fragment implements MyDialogCloseListener{
                     ProductResponse product =  products.getProducts().get(position);
                     bottomSheetNewProductDialog.setTextDescription(product.getDescription());
                     String value = product.getValue().toString();
-                    bottomSheetNewProductDialog.setTextValue(value.replace("R$", "").replace("  ", ""));
+                    value = value.replace("R$ ", "");
+
+                    bottomSheetNewProductDialog.setTextValue(value);
                     bottomSheetNewProductDialog.setIdProduct(product.getId());
                     bottomSheetNewProductDialog.setBottomSheetClientDialog(bottomSheetNewProductDialog);
                     bottomSheetNewProductDialog.show(getFragmentManager(), "tagProduct");
